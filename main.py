@@ -6,6 +6,7 @@ from pydantic import BaseModel
 import sqlite3
 import os, json
 from dotenv import load_dotenv
+import uvicorn
 
 load_dotenv() 
 
@@ -35,16 +36,18 @@ def get_count():
 
 init_db()
 
-app = FastAPI()
-RSS_URL = 'https://news.google.com/rss/search?q="girls+und+panzer"+site:animenewsnetwork.com'
-
 class News(BaseModel):
     title: str
     link: str     
 
+app = FastAPI()
+
+
 news_list = []
 
 security = HTTPBasic()
+
+RSS_URL = os.getenv("RSS_URL", "https://news.google.com/rss")
 
 ADMINS = json.loads(os.getenv("ADMINS", "{}"))
 
@@ -78,6 +81,8 @@ def delete_news(news_id: int, user: str = Depends(check_admin)):
 
 @app.get("/")
 def root():
+    print (RSS_URL)
+    
     feed = fetch_feed()
     added = 0
     for entry in feed.entries[:105]:
@@ -97,10 +102,12 @@ def root():
 # Парсер 
 def fetch_feed():
     context = ssl.create_default_context(cafile=certifi.where())
+    
     req = urllib.request.Request(RSS_URL, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"})
     with urllib.request.urlopen(req, context=context, timeout=30) as response:
         data = response.read()
     return feedparser.parse(data)
 
 
-
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=8000)
