@@ -4,8 +4,8 @@
 
 **Легковесный и быстрый REST API сервис на базе FastAPI для сбора, хранения и модерации новостей из RSS-лент.**
 
-![Python](https://shields.io)
 ![FastAPI](https://shields.io)
+![security](https://shields.io)
 ![SQLite](https://shields.io)
 
 </div>
