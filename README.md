@@ -4,9 +4,9 @@
 
 **Легковесный и быстрый REST API сервис на базе FastAPI для сбора, хранения и модерации новостей из RSS-лент.**
 
-![FastAPI](https://shields.io)
-![security](https://shields.io)
-![SQLite](https://shields.io)
+![FastAPI]([https://shields.io](https://github.com/Knizhniknikita/news-aggregator-api/blob/main/screens/photo1.png?raw=true))
+![security]([https://shields.io](https://github.com/Knizhniknikita/news-aggregator-api/blob/main/screens/photo2.png?raw=true))
+![SQLite]([https://shields.io](https://github.com/Knizhniknikita/news-aggregator-api/blob/main/screens/photo3.png?raw=true))
 
 </div>
 
