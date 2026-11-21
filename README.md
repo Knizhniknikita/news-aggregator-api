@@ -6,7 +6,6 @@
 
 ![FastAPI](https://github.com/Knizhniknikita/news-aggregator-api/blob/main/screens/photo1.png?raw=true)
 ![security](https://github.com/Knizhniknikita/news-aggregator-api/blob/main/screens/photo2.png?raw=true)
-![SQLite](https://github.com/Knizhniknikita/news-aggregator-api/blob/main/screens/photo3.png?raw=true)
 
 </div>
 
