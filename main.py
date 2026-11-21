@@ -40,7 +40,11 @@ class News(BaseModel):
     title: str
     link: str     
 
-app = FastAPI()
+app = FastAPI(
+    title="📰 RSS News Aggregator API",
+    description="REST API для парсинга новостей из RSS, сохранения в SQLite и модерации.",
+    version="1.0.0",
+)
 
 
 news_list = []
@@ -63,23 +67,11 @@ def check_admin(creds: HTTPBasicCredentials = Depends(security)):
         )
     return login
 
-@app.get("/news")
-def get_news():
-    with db() as con:
-        rows = con.execute(
-            "SELECT id, title, link FROM news ORDER BY id DESC"
-        ).fetchall()
-    return [dict(r) for r in rows]
-
-@app.delete("/news/{news_id}")
-def delete_news(news_id: int, user: str = Depends(check_admin)):
-    with db() as con:
-        cur = con.execute("DELETE FROM news WHERE id = ?", (news_id,))
-    if cur.rowcount == 0:
-        return {"error": "нет такой новости"}
-    return {"status": "удалено"}
-
-@app.get("/")
+@app.get(
+    "/",
+    tags=["Парсинг"],
+    summary="Обновить базу новостей из RSS",
+)
 def root():
     print (RSS_URL)
     
@@ -97,7 +89,29 @@ def root():
             pass
     return {"добавлено": added, "всего в базе": get_count()}
 
+@app.get(
+    "/news",
+    tags=["Новости"],
+    summary="Получить список всех новостей",
+)
+def get_news():
+    with db() as con:
+        rows = con.execute(
+            "SELECT id, title, link FROM news ORDER BY id DESC"
+        ).fetchall()
+    return [dict(r) for r in rows]
 
+@app.delete(
+    "/news/{news_id}",
+    tags=["Администрирование"],
+    summary="Удалить новость по ID",
+)
+def delete_news(news_id: int, user: str = Depends(check_admin)):
+    with db() as con:
+        cur = con.execute("DELETE FROM news WHERE id = ?", (news_id,))
+    if cur.rowcount == 0:
+        return {"error": "нет такой новости"}
+    return {"status": "удалено"}
 
 # Парсер 
 def fetch_feed():
