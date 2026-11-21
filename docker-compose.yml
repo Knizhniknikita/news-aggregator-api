@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  api:
+    build: .                # Собрать из Dockerfile
+    container_name: news_api
+    restart: unless-stopped # Автоперезапуск при падении
+    ports:
+      - "8000:8000"         # Пробрасываем порт 8000 наружу
+    env_file:
+      - .env                # Берем пароли из .env
+    volumes:
+      - ${HOST_DATA_PATH}:/app/data
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1

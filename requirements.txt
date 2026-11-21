@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+feedparser
+certifi
+python-dotenv
