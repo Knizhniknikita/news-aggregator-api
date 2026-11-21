@@ -5,10 +5,7 @@
    *.db
    *.sqlite
    *.sqlite3
-   
-   # Картинки 
-   Characters/
-   
+
    # Мусор Python
    __pycache__/
    *.pyc
