@@ -19,4 +19,4 @@ REST API для сбора и агрегации новостей по RSS-ле�
 ## ⚙️ Как запустить локально
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/ТВОЙ_НИКНЕЙМ/news-aggregator-api.git
+   git clone https://github.com/Knizhniknikita/news-aggregator-api.git
