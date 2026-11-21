@@ -7,7 +7,6 @@
 ![Python](https://shields.io)
 ![FastAPI](https://shields.io)
 ![SQLite](https://shields.io)
-![License](https://shields.io)
 
 </div>
 
