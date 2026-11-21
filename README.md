@@ -1,2 +1,22 @@
-# news-aggregator-api
-RSS news aggregator with REST API: FastAPI + SQLite, admin auth (HTTP Basic), Swagger docs, Docker-ready
+# News Aggregator API (FastAPI)
+
+REST API для сбора и агрегации новостей по RSS-лентам с возможностью управления через админ-панель.
+
+## 🚀 Возможности
+- **Парсинг RSS:** Автоматический сбор новостей по заданному запросу (например, "girls und panzer").
+- **База данных:** Сохранение новостей в SQLite с защитой от дубликатов (UNIQUE constraint).
+- **REST API:** Эндпоинты для получения списка новостей и удаления (DELETE).
+- **Авторизация:** Защита админских методов через Basic Auth.
+- **Docker:** Полная контейнеризация приложения (FastAPI + Uvicorn) с сохранением базы данных через volumes.
+
+## 🛠 Стек технологий
+- **Язык:** Python 3.12
+- **Фреймворк:** FastAPI, Uvicorn
+- **База данных:** SQLite
+- **Парсинг:** Feedparser, urllib
+- **Инфраструктура:** Docker, Docker Compose
+
+## ⚙️ Как запустить локально
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com/ТВОЙ_НИКНЕЙМ/news-aggregator-api.git
